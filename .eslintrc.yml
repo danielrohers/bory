@@ -1,0 +1,15 @@
+extends: airbnb-base
+plugins:
+  - import
+rules:
+  no-use-before-define: off
+  no-restricted-syntax: off
+  no-underscore-dangle: off
+  no-param-reassign: off
+  no-shadow: off
+  consistent-return: off
+  default-case: off
+  guard-for-in: off
+  no-cond-assign: off
+  no-return-assign: off
+  import/no-extraneous-dependencies: off
