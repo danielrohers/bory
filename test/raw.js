@@ -12,8 +12,8 @@ describe('bodyParser.raw()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/octet-stream')
-    .send('the user is tobi')
-    .expect(200, 'buf:746865207573657220697320746f6269', done);
+    .send('the user is daniel')
+    .expect(200, 'buf:74686520757365722069732064616e69656c', done);
   });
 
   it('should 400 when invalid content-length', (done) => {
@@ -59,8 +59,8 @@ describe('bodyParser.raw()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/octet-stream')
-    .send('the user is tobi')
-    .expect(200, 'buf:746865207573657220697320746f6269', done);
+    .send('the user is daniel')
+    .expect(200, 'buf:74686520757365722069732064616e69656c', done);
   });
 
   describe('with limit option', () => {

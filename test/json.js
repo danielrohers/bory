@@ -9,8 +9,8 @@ describe('bodyParser.json()', () => {
     request(createServer())
     .post('/')
     .set('Content-Type', 'application/json')
-    .send('{"user":"tobi"}')
-    .expect(200, '{"user":"tobi"}', done);
+    .send('{"user":"daniel"}')
+    .expect(200, '{"user":"daniel"}', done);
   });
 
   it('should fail gracefully', (done) => {
@@ -77,8 +77,8 @@ describe('bodyParser.json()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/json')
-    .send('{"user":"tobi"}')
-    .expect(200, '{"user":"tobi"}', done);
+    .send('{"user":"daniel"}')
+    .expect(200, '{"user":"daniel"}', done);
   });
 
   describe('when strict is false', () => {
@@ -107,8 +107,8 @@ describe('bodyParser.json()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/json')
-      .send('   { "user": "tobi" }')
-      .expect(200, '{"user":"tobi"}', done);
+      .send('   { "user": "daniel" }')
+      .expect(200, '{"user":"daniel"}', done);
     });
   });
 
@@ -216,15 +216,15 @@ describe('bodyParser.json()', () => {
         request(server)
         .post('/')
         .set('Content-Type', 'application/vnd.api+json')
-        .send('{"user":"tobi"}')
-        .expect(200, '{"user":"tobi"}', done);
+        .send('{"user":"daniel"}')
+        .expect(200, '{"user":"daniel"}', done);
       });
 
       it('should ignore standard type', (done) => {
         request(server)
         .post('/')
         .set('Content-Type', 'application/json')
-        .send('{"user":"tobi"}')
+        .send('{"user":"daniel"}')
         .expect(200, '{}', done);
       });
     });
@@ -240,8 +240,8 @@ describe('bodyParser.json()', () => {
         request(server)
         .post('/')
         .set('Content-Type', 'application/vnd.api+json')
-        .send('{"user":"tobi"}')
-        .expect(200, '{"user":"tobi"}', done);
+        .send('{"user":"daniel"}')
+        .expect(200, '{"user":"daniel"}', done);
       });
 
       it('should work without content-type', (done) => {
@@ -252,8 +252,8 @@ describe('bodyParser.json()', () => {
         }
 
         const test = request(server).post('/');
-        test.write('{"user":"tobi"}');
-        test.expect(200, '{"user":"tobi"}', done);
+        test.write('{"user":"daniel"}');
+        test.expect(200, '{"user":"daniel"}', done);
       });
 
       it('should not invoke without a body', (done) => {
@@ -285,7 +285,7 @@ describe('bodyParser.json()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/json')
-      .send('["tobi"]')
+      .send('["daniel"]')
       .expect(403, 'no arrays', done);
     });
 
@@ -302,7 +302,7 @@ describe('bodyParser.json()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/json')
-      .send('["tobi"]')
+      .send('["daniel"]')
       .expect(400, 'no arrays', done);
     });
 
@@ -316,8 +316,8 @@ describe('bodyParser.json()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/json')
-      .send('{"user":"tobi"}')
-      .expect(200, '{"user":"tobi"}', done);
+      .send('{"user":"daniel"}')
+      .expect(200, '{"user":"daniel"}', done);
     });
 
     it('should work with different charsets', (done) => {

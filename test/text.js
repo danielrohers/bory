@@ -12,8 +12,8 @@ describe('bodyParser.text()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'text/plain')
-    .send('user is tobi')
-    .expect(200, '"user is tobi"', done);
+    .send('user is daniel')
+    .expect(200, '"user is daniel"', done);
   });
 
   it('should 400 when invalid content-length', (done) => {
@@ -59,8 +59,8 @@ describe('bodyParser.text()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'text/plain')
-    .send('user is tobi')
-    .expect(200, '"user is tobi"', done);
+    .send('user is daniel')
+    .expect(200, '"user is daniel"', done);
   });
 
   describe('with defaultCharser option', () => {
@@ -174,15 +174,15 @@ describe('bodyParser.text()', () => {
         request(server)
         .post('/')
         .set('Content-Type', 'text/html')
-        .send('<b>tobi</b>')
-        .expect(200, '"<b>tobi</b>"', done);
+        .send('<b>daniel</b>')
+        .expect(200, '"<b>daniel</b>"', done);
       });
 
       it('should ignore standard type', (done) => {
         request(server)
         .post('/')
         .set('Content-Type', 'text/plain')
-        .send('user is tobi')
+        .send('user is daniel')
         .expect(200, '{}', done);
       });
     });
@@ -198,8 +198,8 @@ describe('bodyParser.text()', () => {
         request(server)
         .post('/')
         .set('Content-Type', 'text/vnd.something')
-        .send('user is tobi')
-        .expect(200, '"user is tobi"', done);
+        .send('user is daniel')
+        .expect(200, '"user is daniel"', done);
       });
 
       it('should work without content-type', (done) => {
@@ -210,8 +210,8 @@ describe('bodyParser.text()', () => {
         }
 
         const test = request(server).post('/');
-        test.write('user is tobi');
-        test.expect(200, '"user is tobi"', done);
+        test.write('user is daniel');
+        test.expect(200, '"user is daniel"', done);
       });
 
       it('should not invoke without a body', (done) => {
@@ -243,7 +243,7 @@ describe('bodyParser.text()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'text/plain')
-      .send(' user is tobi')
+      .send(' user is daniel')
       .expect(403, 'no leading space', done);
     });
 
@@ -260,7 +260,7 @@ describe('bodyParser.text()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'text/plain')
-      .send(' user is tobi')
+      .send(' user is daniel')
       .expect(400, 'no leading space', done);
     });
 
@@ -274,8 +274,8 @@ describe('bodyParser.text()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'text/plain')
-      .send('user is tobi')
-      .expect(200, '"user is tobi"', done);
+      .send('user is daniel')
+      .expect(200, '"user is daniel"', done);
     });
 
     it('should 415 on unknown charset prior to verify', (done) => {

@@ -4,20 +4,79 @@ const request = require('supertest');
 const bodyParser = require('..');
 
 describe('bodyParser.nested()', () => {
-  it('should parse x-www-form-urlencoded', (done) => {
-    request(createServer(bodyParser.urlencoded()))
-    .post('/')
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send('user.name=tobi')
-    .expect(200, '{"user":{"name":"tobi"}}', done);
+  describe('x-www-form-urlencoded', () => {
+    const server = createServer(bodyParser.urlencoded());
+
+    it('should object with one attribute', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send('user.first_name=daniel')
+      .expect(200, '{"user":{"first_name":"daniel"}}', done);
+    });
+
+    it('should object with two attribute', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send('user.first_name=daniel')
+      .send('user.last_name=moura')
+      .expect(200, '{"user":{"first_name":"daniel","last_name":"moura"}}', done);
+    });
+
+    it('should overwrite with first object', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send('user=daniel')
+      .send('user.first_name=daniel')
+      .expect(200, '{"user":{"first_name":"daniel"}}', done);
+    });
+
+    it('should overwrite with last object', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send('user.first_name=daniel')
+      .send('user=daniel')
+      .expect(200, '{"user":"daniel"}', done);
+    });
   });
 
-  it('should parse JSON', (done) => {
-    request(createServer(bodyParser.json()))
-    .post('/')
-    .set('Content-Type', 'application/json')
-    .send('{"user.name":"tobi"}')
-    .expect(200, '{"user":{"name":"tobi"}}', done);
+  describe('JSON', () => {
+    const server = createServer(bodyParser.json());
+
+    it('should object with one attribute', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/json')
+      .send('{"user.first_name":"daniel"}')
+      .expect(200, '{"user":{"first_name":"daniel"}}', done);
+    });
+
+    it('should object with two attribute', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/json')
+      .send('{"user.first_name":"daniel", "user.last_name":"moura"}')
+      .expect(200, '{"user":{"first_name":"daniel","last_name":"moura"}}', done);
+    });
+
+    it('should overwrite with first object', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/json')
+      .send('{"user":"daniel", "user.first_name":"daniel"}')
+      .expect(200, '{"user":{"first_name":"daniel"}}', done);
+    });
+
+    it('should overwrite with last object', (done) => {
+      request(server)
+      .post('/')
+      .set('Content-Type', 'application/json')
+      .send('{"user.first_name":"daniel", "user":"daniel"}')
+      .expect(200, '{"user":"daniel"}', done);
+    });
   });
 
   it('should parse application/octet-stream', (done) => {
@@ -31,16 +90,16 @@ describe('bodyParser.nested()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/octet-stream')
-    .send('the user is tobi')
-    .expect(200, 'buf:746865207573657220697320746f6269', done);
+    .send('the user is daniel')
+    .expect(200, 'buf:74686520757365722069732064616e69656c', done);
   });
 
   it('should parse text/plain', (done) => {
     request(createServer(bodyParser.text()))
     .post('/')
     .set('Content-Type', 'text/plain')
-    .send('user is tobi')
-    .expect(200, '"user is tobi"', done);
+    .send('user is daniel')
+    .expect(200, '"user is daniel"', done);
   });
 });
 

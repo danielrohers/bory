@@ -18,16 +18,16 @@ describe('bodyParser()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/json')
-    .send('{"user":"tobi"}')
-    .expect(200, '{"user":"tobi"}', done);
+    .send('{"user":"daniel"}')
+    .expect(200, '{"user":"daniel"}', done);
   });
 
   it('should parse x-www-form-urlencoded', (done) => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send('user=tobi')
-    .expect(200, '{"user":"tobi"}', done);
+    .send('user=daniel')
+    .expect(200, '{"user":"daniel"}', done);
   });
 
   it('should handle duplicated middleware', (done) => {
@@ -45,8 +45,8 @@ describe('bodyParser()', () => {
     request(server)
     .post('/')
     .set('Content-Type', 'application/json')
-    .send('{"user":"tobi"}')
-    .expect(200, '{"user":"tobi"}', done);
+    .send('{"user":"daniel"}')
+    .expect(200, '{"user":"daniel"}', done);
   });
 
   describe('http methods', () => {
@@ -63,7 +63,7 @@ describe('bodyParser()', () => {
             return;
           }
 
-          res.statusCode = req.body.user === 'tobi' ? 201 : 400;
+          res.statusCode = req.body.user === 'daniel' ? 201 : 400;
           res.end();
         });
       });
@@ -78,7 +78,7 @@ describe('bodyParser()', () => {
       it(`should support ${method.toUpperCase()} requests`, (done) => {
         request(server)[method]('/')
         .set('Content-Type', 'application/json')
-        .send('{"user":"tobi"}')
+        .send('{"user":"daniel"}')
         .expect(201, done);
       });
     });
@@ -92,16 +92,16 @@ describe('bodyParser()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/json')
-      .send('{"user":"tobi"}')
-      .expect(200, '{"user":"tobi"}', done);
+      .send('{"user":"daniel"}')
+      .expect(200, '{"user":"daniel"}', done);
     });
 
     it('should parse x-www-form-urlencoded', (done) => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/x-www-form-urlencoded')
-      .send('user=tobi')
-      .expect(200, '{"user":"tobi"}', done);
+      .send('user=daniel')
+      .expect(200, '{"user":"daniel"}', done);
     });
   });
 
@@ -116,7 +116,7 @@ describe('bodyParser()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/json')
-      .send(' {"user":"tobi"}')
+      .send(' {"user":"daniel"}')
       .expect(403, 'no leading space', done);
     });
 
@@ -130,7 +130,7 @@ describe('bodyParser()', () => {
       request(server)
       .post('/')
       .set('Content-Type', 'application/x-www-form-urlencoded')
-      .send(' user=tobi')
+      .send(' user=daniel')
       .expect(403, 'no leading space', done);
     });
   });
