@@ -346,7 +346,7 @@ as well as in the `encoding` property. The `status` property is set to `415`.
 
 ## Examples
 
-### Express/Connect/Restify top-level generic
+### Express / Connect / Restify top-level generic
 
 This example demonstrates adding a generic JSON and URL-encoded parser as a
 top-level middleware, which will parse the bodies of all incoming requests.
