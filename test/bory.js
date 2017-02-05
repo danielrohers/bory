@@ -2,9 +2,9 @@ const http = require('http');
 const methods = require('methods');
 const request = require('supertest');
 
-const bodyParser = require('..');
+const bory = require('..');
 
-describe('bodyParser()', () => {
+describe('bory()', () => {
   let server;
   before(() => server = createServer());
 
@@ -31,10 +31,10 @@ describe('bodyParser()', () => {
   });
 
   it('should handle duplicated middleware', (done) => {
-    const _bodyParser = bodyParser();
+    const _bory = bory();
     const server = http.createServer((req, res) => {
-      _bodyParser(req, res, (err0) => {
-        _bodyParser(req, res, (err1) => {
+      _bory(req, res, (err0) => {
+        _bory(req, res, (err1) => {
           const err = err0 || err1;
           res.statusCode = err ? (err.status || 500) : 200;
           res.end(err ? err.message : JSON.stringify(req.body));
@@ -53,10 +53,10 @@ describe('bodyParser()', () => {
     let server;
 
     before(() => {
-      const _bodyParser = bodyParser();
+      const _bory = bory();
 
       server = http.createServer((req, res) => {
-        _bodyParser(req, res, (err) => {
+        _bory(req, res, (err) => {
           if (err) {
             res.statusCode = 500;
             res.end(err.message);
@@ -137,9 +137,9 @@ describe('bodyParser()', () => {
 });
 
 function createServer(opts) {
-  const _bodyParser = bodyParser(opts);
+  const _bory = bory(opts);
   return http.createServer((req, res) => {
-    _bodyParser(req, res, (err) => {
+    _bory(req, res, (err) => {
       res.statusCode = err ? (err.status || 500) : 200;
       res.end(err ? err.message : JSON.stringify(req.body));
     });

@@ -2,9 +2,9 @@ const assert = require('assert');
 const http = require('http');
 const request = require('supertest');
 
-const bodyParser = require('..');
+const bory = require('..');
 
-describe('bodyParser.text()', () => {
+describe('bory.text()', () => {
   let server;
   before(() => server = createServer());
 
@@ -17,7 +17,7 @@ describe('bodyParser.text()', () => {
   });
 
   it('should 400 when invalid content-length', (done) => {
-    const textParser = bodyParser.text();
+    const textParser = bory.text();
     const server = createServer((req, res, next) => {
       req.headers['content-length'] = '20'; // bad length
       textParser(req, res, next);
@@ -48,7 +48,7 @@ describe('bodyParser.text()', () => {
   });
 
   it('should handle duplicated middleware', (done) => {
-    const textParser = bodyParser.text();
+    const textParser = bory.text();
     const server = createServer((req, res, next) => {
       textParser(req, res, (err) => {
         if (err) return next(err);
@@ -397,9 +397,9 @@ function allocBuffer(size, fill) {
 }
 
 function createServer(opts) {
-  const _bodyParser = typeof opts !== 'function' ? bodyParser.text(opts) : opts;
+  const _bory = typeof opts !== 'function' ? bory.text(opts) : opts;
   return http.createServer((req, res) => {
-    _bodyParser(req, res, (err) => {
+    _bory(req, res, (err) => {
       res.statusCode = err ? (err.status || 500) : 200;
       res.end(err ? err.message : JSON.stringify(req.body));
     });

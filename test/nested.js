@@ -1,11 +1,11 @@
 const http = require('http');
 const request = require('supertest');
 
-const bodyParser = require('..');
+const bory = require('..');
 
-describe('bodyParser.nested()', () => {
+describe('bory.nested()', () => {
   describe('x-www-form-urlencoded', () => {
-    const server = createServer(bodyParser.urlencoded());
+    const server = createServer(bory.urlencoded());
 
     it('should object with one attribute', (done) => {
       request(server)
@@ -44,7 +44,7 @@ describe('bodyParser.nested()', () => {
   });
 
   describe('JSON', () => {
-    const server = createServer(bodyParser.json());
+    const server = createServer(bory.json());
 
     it('should object with one attribute', (done) => {
       request(server)
@@ -80,7 +80,7 @@ describe('bodyParser.nested()', () => {
   });
 
   it('should parse application/octet-stream', (done) => {
-    const server = createServer(bodyParser.raw(), (req, res) => {
+    const server = createServer(bory.raw(), (req, res) => {
       if (Buffer.isBuffer(req.body)) {
         res.end(`buf:${req.body.toString('hex')}`);
         return;
@@ -95,7 +95,7 @@ describe('bodyParser.nested()', () => {
   });
 
   it('should parse text/plain', (done) => {
-    request(createServer(bodyParser.text()))
+    request(createServer(bory.text()))
     .post('/')
     .set('Content-Type', 'text/plain')
     .send('user is daniel')
@@ -104,10 +104,10 @@ describe('bodyParser.nested()', () => {
 });
 
 function createServer(opts, cb) {
-  const _bodyParser = typeof opts !== 'function' ? bodyParser.json(opts) : opts;
-  const _nested = bodyParser.nested();
+  const _bory = typeof opts !== 'function' ? bory.json(opts) : opts;
+  const _nested = bory.nested();
   return http.createServer((req, res) => {
-    _bodyParser(req, res, (err) => {
+    _bory(req, res, (err) => {
       res.statusCode = err ? (err.status || 500) : 200;
       if (err) return res.end(err.message);
       _nested(req, res, (err) => {
