@@ -4,7 +4,7 @@
   "description": "Node.js body and query parsing middleware",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --plugin markdown --ext js,md .",
+    "lint": "eslint . --ext .js",
     "test": "mocha --require test/support/env --reporter spec --check-leaks --bail test/"
   },
   "repository": {
