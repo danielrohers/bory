@@ -29,6 +29,7 @@ This module provides the following parsers:
   * [Text bory](#borytextoptions)
   * [URL-encoded form bory](#boryurlencodedoptions)
   * [Nested bory](#borynestedoptions)
+  * [Query parser bory](#boryqueryparser)
 
 ## Installation
 
@@ -345,7 +346,7 @@ as well as in the `encoding` property. The `status` property is set to `415`.
 
 ## Examples
 
-### Express/Connect top-level generic
+### Express/Connect/Restify top-level generic
 
 This example demonstrates adding a generic JSON and URL-encoded parser as a
 top-level middleware, which will parse the bodies of all incoming requests.
@@ -398,7 +399,7 @@ app.use((req, res) => {
 ### Express route-specific
 
 This example demonstrates adding body parsers specifically to the routes that
-need them. In general, this is the most recommended way to use body-parser with
+need them. In general, this is the most recommended way to use bory with
 Express.
 
 ```js
