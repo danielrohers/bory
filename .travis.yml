@@ -6,6 +6,5 @@ node_js:
   - 7
 install:
   - npm install
-  - yarn
 script:
   - npm test
