@@ -73,7 +73,7 @@ describe('bory()', () => {
 
     methods.slice().sort().forEach((method) => {
       // except
-      if (['connect', 'head'].includes(method)) {
+      if (['connect', 'head'].indexOf(method) !== -1) {
         return;
       }
 
