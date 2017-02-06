@@ -1,6 +1,6 @@
 # bory
- 
-Node.js **bo**dy and que**ry** parsing middleware. *Node >= v4.0.0*
+
+Node.js **bo**dy and que**ry** parsing middleware with nesting. *Node >= v4.0.0*
 
 **This is a fork of the [body-parser](https://github.com/expressjs/body-parser), but with improvements like nested.**
 

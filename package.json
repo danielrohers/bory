@@ -1,7 +1,7 @@
 {
   "name": "bory",
   "version": "1.0.1",
-  "description": "Node.js body and query parsing middleware",
+  "description": "Node.js body and query parsing middleware with nesting",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js",
