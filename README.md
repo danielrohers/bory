@@ -9,6 +9,7 @@ Node.js **bo**dy and que**ry** parsing middleware. *Node >= v4.0.0*
 [![devDependency Status](https://david-dm.org/danielrohers/bory/dev-status.svg)](https://david-dm.org/danielrohers/bory#info=devDependencies)
 [![npm](https://img.shields.io/npm/dt/bory.svg)](https://www.npmjs.com/package/bory)
 [![npm version](https://badge.fury.io/js/bory.svg)](https://badge.fury.io/js/bory)
+[![Code Climate](https://codeclimate.com/github/danielrohers/bory/badges/gpa.svg)](https://codeclimate.com/github/danielrohers/bory)
 
 Parse incoming request bodies in a middleware before your handlers, available
 under the `req.body` and `req.query` property.
