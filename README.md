@@ -38,6 +38,12 @@ This module provides the following parsers:
   
 [Examples](#examples)
 
+  * [Node top-level generic](#node-top-level-generic)
+  * [Express / Connect / Restify top-level generic](#express--connect--restify-top-level-generic)
+  * [Express nested](#express-nested)
+  * [Express route-specific](#express-route-specific)
+  * [Change accepted type for parsers](#change-accepted-type-for-parsers)
+
 ## Installation
 
 ```sh
