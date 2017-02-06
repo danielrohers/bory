@@ -36,7 +36,7 @@ This module provides the following parsers:
   * [Nested bory](#borynestedoptions)
   * [Query parser bory](#boryqueryparser)
   
-Examples
+Examples:
 
   * [Node top-level generic](#node-top-level-generic)
   * [Express / Connect / Restify top-level generic](#express--connect--restify-top-level-generic)
