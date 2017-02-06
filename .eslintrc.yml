@@ -13,3 +13,4 @@ rules:
   no-cond-assign: off
   no-return-assign: off
   import/no-extraneous-dependencies: off
+  strict: off
