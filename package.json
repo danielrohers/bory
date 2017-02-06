@@ -1,6 +1,6 @@
 {
   "name": "bory",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js body and query parsing middleware with nesting",
   "main": "index.js",
   "scripts": {
