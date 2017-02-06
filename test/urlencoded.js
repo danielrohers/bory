@@ -1,3 +1,5 @@
+'use strict';
+
 const assert = require('assert');
 const http = require('http');
 const request = require('supertest');
