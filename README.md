@@ -351,6 +351,40 @@ as well as in the `encoding` property. The `status` property is set to `415`.
 
 ## Examples
 
+### Node top-level generic
+
+This example demonstrates adding a generic JSON, URL-encoded, Query and Nested parser as a top-level middleware, which will parse the bodies of all incoming requests. This is the simplest setup.
+
+```js
+const http = require('http');
+const async = require('async');
+const bory = require('bory');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  async.series([
+    // parse application/x-www-form-urlencoded
+    async.apply(bory.urlencoded({ extended: false }), req, res),
+    // parse application/json
+    async.apply(bory.json(), req, res),
+    // parse query
+    async.apply(bory.queryParser(), req, res),
+    // parse nested
+    async.apply(bory.nested(), req, res),
+  ], (err) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end(req.body.user.first_name);
+  });
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
 ### Express / Connect / Restify top-level generic
 
 This example demonstrates adding a generic JSON and URL-encoded parser as a
