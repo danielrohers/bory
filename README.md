@@ -1,10 +1,14 @@
 # bory
 
-Node.js **bo**dy and que**ry** parsing middleware. *Node >= v6.0.0*
+Node.js **bo**dy and que**ry** parsing middleware. *Node >= v4.0.0*
 
 **This is a fork of the [body-parser](https://github.com/expressjs/body-parser), but with improvements like nested.**
 
 [![Build Status](https://travis-ci.org/danielrohers/bory.svg?branch=master)](https://travis-ci.org/danielrohers/bory)
+[![Dependency Status](https://david-dm.org/danielrohers/bory/dev-status.svg)](https://david-dm.org/danielrohers/bory#info=dependencies)
+[![devDependency Status](https://david-dm.org/danielrohers/bory/dev-status.svg)](https://david-dm.org/danielrohers/bory#info=devDependencies)
+[![npm](https://img.shields.io/npm/dt/bory.svg)](https://www.npmjs.com/package/bory)
+[![npm version](https://badge.fury.io/js/bory.svg)](https://badge.fury.io/js/bory)
 
 Parse incoming request bodies in a middleware before your handlers, available
 under the `req.body` and `req.query` property.
