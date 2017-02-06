@@ -443,6 +443,26 @@ app.use((req, res) => {
 })
 ```
 
+When performing a POST with:
+```js
+{
+  'user.first_name': 'daniel',
+  'user.last_name': 'moura',
+}
+```
+
+With [body-parser](https://github.com/expressjs/body-parser) you will have:
+```js
+req.body['user.first_name']; //daniel
+req.body['user.last_name']; //moura
+```
+
+With **bory** you will have:
+```js
+req.body.user.first_name; //daniel
+req.body.user.last_name; //moura
+```
+
 ### Express route-specific
 
 This example demonstrates adding body parsers specifically to the routes that
