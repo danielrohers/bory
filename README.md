@@ -35,6 +35,8 @@ This module provides the following parsers:
   * [URL-encoded form bory](#boryurlencodedoptions)
   * [Nested bory](#borynestedoptions)
   * [Query parser bory](#boryqueryparser)
+  
+[Examples](#examples)
 
 ## Installation
 
